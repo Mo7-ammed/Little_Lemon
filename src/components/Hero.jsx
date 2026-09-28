@@ -1,6 +1,6 @@
 export default function Hero({ onReserveClick }) {
   return (
-    <section className="hero-section" aria-labelledby="hero-title">
+    <section id="home" className="hero-section" aria-labelledby="hero-title">
       <div className="grid-container">
         <div className="grid-content">
           <div className="hero-grid">

@@ -44,10 +44,8 @@ export default function Footer({ onNavigate }) {
                     href="#menu"
                     onClick={(e) => {
                       e.preventDefault()
-                      onNavigate('home')
-                      setTimeout(() => {
-                        document.getElementById('specials')?.scrollIntoView({ behavior: 'smooth' })
-                      }, 50)
+                      onNavigate('menu')
+                      window.scrollTo({ top: 0, behavior: 'instant' })
                     }}
                   >
                     Menu
@@ -69,7 +67,8 @@ export default function Footer({ onNavigate }) {
                     href="#order-online"
                     onClick={(e) => {
                       e.preventDefault()
-                      onNavigate('home')
+                      onNavigate('order-online')
+                      window.scrollTo({ top: 0, behavior: 'instant' })
                     }}
                   >
                     Order Online

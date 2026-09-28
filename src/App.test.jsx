@@ -16,6 +16,26 @@ describe('Component rendering without crashing', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
     expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('Reservations')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument()
+  })
+
+  it('opens and closes the login pop-up form', async () => {
+    const user = userEvent.setup()
+    render(<Header currentPage="home" setCurrentPage={() => {}} />)
+    const loginButton = screen.getByRole('button', { name: /login/i })
+    expect(loginButton).toBeInTheDocument()
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    await user.click(loginButton)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /sign in to little lemon/i })).toBeInTheDocument()
+    expect(screen.getByLabelText(/email or username/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/^password/i)).toBeInTheDocument()
+
+    const closeBtn = screen.getByRole('button', { name: /close login dialog/i })
+    await user.click(closeBtn)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
   it('renders Hero with heading and CTA button', () => {

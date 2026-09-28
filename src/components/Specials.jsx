@@ -13,7 +13,7 @@ const specialsData = [
     price: '$5.99',
     description:
       'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil, topped with fresh diced tomatoes.',
-    image: '/icons_assets/9beeddcd9d22dc711cd9fddc4a3393a7278299c7.jpg',
+    image: '/icons_assets/bruchetta.svg',
   },
   {
     id: 3,
@@ -25,14 +25,14 @@ const specialsData = [
   },
 ]
 
-export default function Specials() {
+export default function Specials({ onMenuClick, onOrderClick }) {
   return (
     <section id="specials" className="specials-section" aria-labelledby="specials-heading">
       <div className="grid-container">
         <div className="grid-content">
           <div className="specials-header">
             <h2 id="specials-heading">This weeks specials!</h2>
-            <button type="button" className="btn-primary" aria-label="View online menu">
+            <button type="button" className="btn-primary" onClick={onMenuClick} aria-label="View full menu">
               Online Menu
             </button>
           </div>
@@ -55,6 +55,7 @@ export default function Specials() {
                     href="#order"
                     className="special-card-action"
                     aria-label={`Order ${special.title} for delivery`}
+                    onClick={(e) => { e.preventDefault(); if (onOrderClick) onOrderClick() }}
                   >
                     <span>Order a delivery</span>
                     <img

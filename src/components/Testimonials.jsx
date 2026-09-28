@@ -29,9 +29,27 @@ const testimonialsData = [
   },
 ]
 
+function DefaultUserIcon() {
+  return (
+    <svg
+      className="testimonial-avatar"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2a5 5 0 100 10 5 5 0 000-10zm-3 5a3 3 0 116 0 3 3 0 01-6 0zm-5 13a7 7 0 0114 0H4zm-2 2a9 9 0 0118 0H2z"
+      />
+    </svg>
+  )
+}
+
 export default function Testimonials() {
   return (
-    <section className="testimonials-section" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="testimonials-section" aria-labelledby="testimonials-heading">
       <div className="grid-container">
         <div className="grid-content">
           <h2 id="testimonials-heading">Testimonials</h2>
@@ -42,11 +60,7 @@ export default function Testimonials() {
                   {'★'.repeat(item.rating)}{'☆'.repeat(5 - item.rating)}
                 </div>
                 <div className="testimonial-user">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="testimonial-avatar"
-                  />
+                  <DefaultUserIcon />
                   <h3 className="testimonial-name">{item.name}</h3>
                 </div>
                 <p className="testimonial-text">"{item.review}"</p>
